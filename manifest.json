@@ -1,0 +1,11 @@
+{
+    "name": "Calendar-Alert",
+    "version": "1.0.0",
+    "description": "Your calendar alert",
+    "manifest_version": 1,
+    "author": "Abigail and Evan",
+    "action":{
+        "default-popup": "index.html",
+        "default-title": "Your Next Calendar Event"
+    }
+}
