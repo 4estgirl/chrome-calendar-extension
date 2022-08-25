@@ -29,13 +29,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-
+    let newNextEvent;
   // make a fetch request to get user Google calendar data
-  function getGoogleCalData() {
+//   function getGoogleCalData() {
     fetch (encodeURI('https://www.googleapis.com/calendar/v3/calendars/' + calId + '/events?key=' + key))
     .then((data) => data.json())
     .then((data) => {
-        console.log(data);
+        // console.log(data);
         // populate the next event
         // const newNextEvent = new NextEvent(data.items[1]);
 
@@ -47,30 +47,32 @@ document.addEventListener("DOMContentLoaded", function() {
         for (let i = 1; i < data.items.length; i++){
             // if start time of current item is greater than current time
             // NEED TO CONVERT dateTime
-            console.log('I made it in the loop')
-            console.log('currentTime', currentTime);
-            console.log('currentEventTime', Date.parse(data.items[i].start.dateTime));
+            // console.log('I made it in the loop')
+            // console.log('currentTime', currentTime);
+            // console.log('currentEventTime', Date.parse(data.items[i].start.dateTime));
             if (currentTime < Date.parse(data.items[i].start.dateTime)){
-                console.log('I made it in the first conditional')
+                // console.log('I made it in the first conditional')
                 // check if the difference between current time and time of current item is less than the difference of next event time and current time
-                console.log('first', Math.abs(currentTime - Date.parse(data.items[i].start.dateTime)));
-                console.log('second', Math.abs(currentTime - Date.parse(nextEvent.start.dateTime)));
+                // console.log('first', Math.abs(currentTime - Date.parse(data.items[i].start.dateTime)));
+                // console.log('second', Math.abs(currentTime - Date.parse(nextEvent.start.dateTime)));
                 if (Math.abs(currentTime - Date.parse(data.items[i].start.dateTime)) < Math.abs(currentTime - Date.parse(nextEvent.start.dateTime))) {
-                    console.log('I made it in the 2nd conditional')
+                    // console.log('I made it in the 2nd conditional')
                     // reassign next event to be this event
                     nextEvent = data.items[i];
                 }
             }
         }
         // create a new NextEvent obj passing in next event
-        const newNextEvent = new NextEvent(nextEvent); 
+        newNextEvent = new NextEvent(nextEvent); 
+        newNextEvent.setAttribute('id', 'next');
+        // add zoom pop up
     })
     .catch((data) => {
-      console.log("Error!");
+        console.log("Error!");
     })
-      
-  }
-  getGoogleCalData();
+        
+//   }
+//   getGoogleCalData();
 
   // when the next event happens
     // popup alert, open links

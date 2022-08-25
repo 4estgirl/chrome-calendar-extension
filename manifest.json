@@ -2,13 +2,21 @@
     "name": "Calendar-Alert",
     "version": "1.0.0",
     "description": "Your calendar alert",
-    "manifest_version": 2,
+    "permissions":[
+      "activeTab",
+      "<all_urls>",
+      "tabs"
+    ],
+    "host_permissions": [
+      "<all_urls>"
+    ],
+    "manifest_version": 3,
     "author": "Abigail and Evan",
     "content_scripts": [
         {
-          "matches": ["https://www.google.com/"],
+          "matches": ["<all_urls>"],
           "css": ["style.css"],
-          "js": ["main.js"]
+          "js": ["openPop.js"]
         }
       ],
     "action":{
