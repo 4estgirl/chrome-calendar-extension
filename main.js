@@ -20,9 +20,12 @@ document.addEventListener("DOMContentLoaded", function() {
         this.location = event.location;
 
         // set the html h1 and p
+        document.createElement('dialog')
         document.getElementById('next-event-name').innerText = `Your Next Event is: ${this.name}`;
         document.getElementById('next-event-start').innerText = `Your Next Event is at: ${this.start}`;
         document.getElementById('event-content').innerText = `Event Information: ${this.description}, ${this.location}`;
+        // document.getElementById('zoom-link').innerText = `Click here to join Zoom call: ${this.location}`;
+        // document.getElementById('zoom-link').setAttribute('href=', `${this.location}`);
     }
   }
 

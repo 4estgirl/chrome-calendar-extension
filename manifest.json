@@ -2,8 +2,15 @@
     "name": "Calendar-Alert",
     "version": "1.0.0",
     "description": "Your calendar alert",
-    "manifest_version": 1,
+    "manifest_version": 2,
     "author": "Abigail and Evan",
+    "content_scripts": [
+        {
+          "matches": ["https://www.google.com/"],
+          "css": ["style.css"],
+          "js": ["main.js"]
+        }
+      ],
     "action":{
         "default-popup": "index.html",
         "default-title": "Your Next Calendar Event"
